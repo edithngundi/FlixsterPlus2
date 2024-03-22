@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
         supportActionBar?.title = "Trending People"
 
-        val numberOfColumns = 2  // You can change this to 3 or more if needed
+        val numberOfColumns = 2
         binding.rvPeople.layoutManager = GridLayoutManager(this, numberOfColumns)
 
         peopleAdapter = TrendingPersonAdapter(emptyList())
@@ -52,26 +52,24 @@ class MainActivity : AppCompatActivity() {
         (binding.rvPeople.layoutManager as? GridLayoutManager)?.spanCount = newSpanCount
     }
 
-    // Helper function to determine span count based on orientation.
     private fun determineSpanCount(): Int {
         val orientation = resources.configuration.orientation
         return if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            3 // or more, for landscape mode
+            3 // landscape mode
         } else {
-            2 // for portrait mode
+            2 // portrait mode
         }
     }
 
     private fun fetchTrendingPeople() {
         CoroutineScope(Dispatchers.IO).launch {
             try {
-                val peopleResponse = service.getTrendingPeople("a07e22bc18f5cb106bfe4cc1f83ad8ed") // Replace with your API key
+                val peopleResponse = service.getTrendingPeople("api_key")
                 withContext(Dispatchers.Main) {
                     peopleAdapter.updatePeople(peopleResponse.results)
                 }
             } catch (e: Exception) {
                 e.printStackTrace()
-                // Handle the error appropriately
             }
         }
     }

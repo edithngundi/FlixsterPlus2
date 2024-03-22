@@ -22,19 +22,16 @@ class DetailsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.person_details)
 
-        // Extract the details from the intent
         val name = intent.getStringExtra("name")
         val popularity = intent.getDoubleExtra("popularity", 0.0)
         val imageUrl = intent.getStringExtra("profile_path")
         val biography = intent.getStringExtra("biography")
         val posterUrls = intent.getStringArrayListExtra("poster_urls")
 
-        // Assuming you have a TextView for the name and popularity and an ImageView for the profile picture
         findViewById<TextView>(R.id.tvPersonName).text = name
         findViewById<TextView>(R.id.tvPopularity).text = String.format("Popularity: %.2f", popularity)
         val ivProfilePicture = findViewById<ImageView>(R.id.ivProfilePicture)
 
-        // Use the imageUrl to load the image with Glide and handle any potential errors
         Glide.with(this)
             .load("https://image.tmdb.org/t/p/w500$imageUrl")
             .placeholder(R.drawable.loading_placeholder)
@@ -47,7 +44,7 @@ class DetailsActivity : AppCompatActivity() {
                     isFirstResource: Boolean
                 ): Boolean {
                     Log.e("DetailsActivity", "Image load failed", e)
-                    return false // False if you want Glide's default behavior to happen as well.
+                    return false
                 }
 
                 override fun onResourceReady(
@@ -57,7 +54,7 @@ class DetailsActivity : AppCompatActivity() {
                     dataSource: DataSource?,
                     isFirstResource: Boolean
                 ): Boolean {
-                    return false // False if you want Glide's default behavior to happen as well.
+                    return false
                 }
             })
             .into(ivProfilePicture)

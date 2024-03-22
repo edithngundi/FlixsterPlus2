@@ -17,7 +17,7 @@ class TrendingPersonAdapter(private var people: List<Person>) : RecyclerView.Ada
     }
 
     override fun onBindViewHolder(holder: PersonViewHolder, position: Int) {
-        val person = people[position] // Get the person at this position
+        val person = people[position]
         val posterUrls = person.known_for.map { movie ->
             "https://image.tmdb.org/t/p/w500${movie.poster_path}"
         }
@@ -32,7 +32,7 @@ class TrendingPersonAdapter(private var people: List<Person>) : RecyclerView.Ada
         }
 
         with(holder) {
-            with(person) { // Now we use the person object we got above
+            with(person) {
                 binding.tvName.text = name
                 binding.tvPopularity.text = String.format("Popularity: %.2f", popularity)
 
