@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">FlixsterPlus2</string>
+    <string name="person_image">Person name</string>
+    <string name="profile_image_description">Description</string>
+    <string name="known_for_recycler_view_description">List of movies the person is known for</string>
+    <string name="biography_text">Biography text goes here</string>
+    <string name="known_for">Known For</string>
+</resources>
