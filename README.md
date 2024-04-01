@@ -2,7 +2,7 @@
 
 Submitted by: **FlixsterPlus2**
 
-**Name of your app** is a movie browsing app that allows users to browse ... [TODO] 
+**Name of your app** is a movie browsing app that allows users to browse popular actors and actresses
 
 Time spent: **8** hours spent in total
 
